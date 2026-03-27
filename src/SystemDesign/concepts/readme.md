@@ -29,4 +29,31 @@
 
 ## Distributed Data Stores:
 
-* Two types of dB. 1. RDMS 2. NO SQL
+* Two types of dB. 
+  1. RDMS 
+  2. NO SQL
+
+* There is a service which converts word to pdf. If the number of requests to the service increases, the data in the database also increases.
+  This will result in slow response times or inc the latency while fetching the data from the db. So, how to handle such scaling situation ? 
+* Scale Database
+  * **Master Slave Architecture**: 
+    You write data to the master and read from slave. The master writes to slave. The user reads data from the slave. 
+    But, this is not consistent because what if user reads the data from slave just after updating it to master ? It gives wrong results. 
+  * **Sharding**:
+    You create multiple shards of the database. And based on range, route these requests to these shards. But one shard, can get more requests than other
+
+### CAP THEOREM:
+  * **Consistency:** There are two dbs, and you have to make sure that the data that is written is read and not incorrect data. 
+  * **Availability:** Even if some machines in your cluster goes down, you should still be able to access the apis of the machine. or access the system 
+  * **Partition:** Even if the connection between two db is lost, the system is still running. (Partition Tolerant)
+  * You can only choose two properties among the above 3. 
+  * For example, social media platforms like facebook, instagram focus on A and P and not on C. This is because availability is more imp than accurate data. 
+  * NO SQL systems like Cassandra don't provide consistency but have eventual consistency. But you can change configuration and make it consistent. 
+  * BASE - Basically available soft state and eventually consistent.
+  * RDBS - Consistent (ACID)
+  
+
+### How Distributed DataStore works ? (Basics)
+* 
+    
+    
